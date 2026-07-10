@@ -61,13 +61,17 @@ nav a {
 nav a:hover, nav a:focus { color: var(--accent); border-color: var(--accent); }
 
 main {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
   width: min(calc(100% - 40px), 1180px);
   margin: 0 auto;
   padding: 28px 0 48px;
 }
 
 .page {
-  margin: 0 0 32px;
+  min-width: 0;
+  margin: 0;
   padding: 14px;
   background: var(--panel);
   border: 1px solid var(--line);
@@ -75,6 +79,7 @@ main {
   box-shadow: 0 10px 34px rgba(0, 0, 0, .08);
   scroll-margin-top: 84px;
 }
+
 .page-label {
   margin: 0 0 12px;
   color: var(--muted);
@@ -83,6 +88,7 @@ main {
   font-weight: 700;
   letter-spacing: .5px;
 }
+
 .page img { display: block; width: 100%; height: auto; border-radius: 8px; background: #fff; }
 
 footer {
@@ -95,13 +101,13 @@ footer {
 
 @media (max-width: 720px) {
   .header-inner { align-items: flex-start; flex-direction: column; width: min(calc(100% - 32px), 1180px); }
-  main { width: min(calc(100% - 20px), 1180px); padding: 18px 0 32px; }
-  .page { margin-bottom: 18px; padding: 8px; border-radius: 10px; }
+  main { grid-template-columns: 1fr; gap: 18px; width: min(calc(100% - 20px), 1180px); padding: 18px 0 32px; }
+  .page { padding: 8px; border-radius: 10px; }
   .page-label { margin: 3px 4px 11px; }
 }
 
 @media print {
   header, footer, .page-label { display: none; }
-  body, main, .page { margin: 0; padding: 0; background: #fff; border: 0; box-shadow: none; }
+  body, main, .page { display: block; margin: 0; padding: 0; background: #fff; border: 0; box-shadow: none; }
   .page { page-break-after: always; }
 }
